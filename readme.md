@@ -23,6 +23,8 @@ coding skills.
 - [Questions](#questions)
   - [Palindrome Checker](#1-palindrome-checker)
   - [Duplicate Number Finder](#2-duplicate-number-finder)
+  - [Missing Number Finder and Array
+  Update](#3-missing-number-finder-and-array-update)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -145,8 +147,146 @@ $duplicateChecker = new Duplicate($array);
 $duplicateChecker->isItDuplicate();
 ```
 ---
+### 3. Missing Number Finder and Array Update
 
+<ul>
+  <li><strong>Description</strong>: Given an array containing a sequence of unique numbers starting from <code>1</code> but with one number missing, determine the missing number, add it back into the array, and print the updated array.</li>
+  
+  <li><strong>Solution</strong>:
+    <ul>
+      <li>Calculate the sum of numbers in the array.</li>
+      <li>Use the formula for the sum of the first <code>n</code> natural numbers, where <code>n</code> is the largest number in the array:  
+        <div>
+          <code>expected sum = (n * (n + 1)) / 2</code>
+        </div>
+      </li>
+      <li>Subtract the actual sum of the numbers in the array from the expected sum to find the missing number.</li>
+      <li>Append the missing number to the array and print the updated array.</li>
+    </ul>
+  </li>
 
+  <li><strong>Example</strong>:
+    <ul>
+      <li>Given the array <code>[1, 2, 4, 5]</code>, the output should indicate that the missing number is <code>3</code>, and the updated array is <code>[1, 2, 3, 4, 5]</code>.</li>
+    </ul>
+  </li>
+  
+  **code solution**
+  ```php
+  class MissingNumberFinder
+{
+  private $numbers; // The input array of numbers
+
+  /**
+   * Constructor to initialize the input array
+   *
+   * @param array $numbers - The array of numbers in the sequence
+   */
+  public function __construct(array $numbers)
+  {
+    $this->numbers = $numbers;
+  }
+
+  /**
+   * Method to calculate, add, and display the missing number in the sequence
+   *
+   * @return void
+   */
+  public function findAndAddMissingNumber(): void
+  {
+    // Calculate the sum of numbers in the array
+    $actualSum = array_sum($this->numbers);
+
+    // Find the maximum expected number in the sequence
+    $maxNumber = max($this->numbers);
+
+    // Calculate the expected sum for a full sequence from 1 to maxNumber
+    $expectedSum = ($maxNumber * ($maxNumber + 1)) / 2;
+
+    // Calculate the missing number as the difference between expected and actual sums
+    $missingNumber = $expectedSum - $actualSum;
+
+    // Add the missing number to the array
+    $this->numbers[] = $missingNumber;
+
+    // Sort the array to keep the sequence in order
+    sort($this->numbers);
+
+    // Output the result
+    echo "The missing number is: $missingNumber\n";
+    echo "Updated array with the missing number added: " .
+      implode(", ", $this->numbers) .
+      "\n";
+  }
+}
+
+// Example usage
+$numbers = [1, 2, 4, 5]; // Sequence with missing number 3
+$missingFinder = new MissingNumberFinder($numbers);
+$missingFinder->findAndAddMissingNumber();
+  ```
+</ul>
+
+---
+### 4. Fibonacci Sequence Generator
+#### What is Fibonacci?
+The **Fibonacci sequence** is a series of numbers in which each number is the sum of the two preceding ones, usually starting with 0 and 1. The sequence is defined by the following recurrence relation:
+- **Description**: Generate the Fibonacci sequence up to a specified number of terms.
+
+- **Solution**: 
+  - Initialize two starting numbers, typically `0` and `1`.
+  - Loop through the specified number of terms, each time adding the sum of the previous two numbers to the sequence.
+  - Update the last two numbers at each step to continue generating the sequence.
+
+- **Example**:
+  - Given `n = 5`, the Fibonacci sequence generated is `[0, 1, 1, 2, 3]`.
+
+**code solution**
+
+```php
+class FibonacciGenerator
+{
+  private int|float $termCount;
+  private int|float $firstTerm;
+  private int|float $secondTerm;
+  private array $sequence;
+
+  /**
+   * Constructor to initialize the Fibonacci sequence parameters.
+   *
+   * @param int,float $termCount - Number of Fibonacci terms to generate.
+   */
+  public function __construct(int|float $termCount)
+  {
+    $this->termCount = $termCount;
+    $this->firstTerm = 0;
+    $this->secondTerm = 1;
+    $this->sequence = [];
+  }
+
+  /**
+   * Method to generate and output the Fibonacci sequence as a comma-separated string.
+   *
+   * @return void
+   */
+  public function generateFibonacci(): void
+  {
+    for ($i = 0; $i < $this->termCount; $i++) {
+      $this->sequence[] = $this->firstTerm;
+      $nextValue = $this->firstTerm + $this->secondTerm;
+      $this->firstTerm = $this->secondTerm;
+      $this->secondTerm = $nextValue;
+    }
+
+    echo implode(", ", $this->sequence) . "\n";
+  }
+}
+
+// Example usage
+$fibonacciGenerator = new FibonacciGenerator(5);
+$fibonacciGenerator->generateFibonacci();
+
+```
 ## Contributing
 Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
 
