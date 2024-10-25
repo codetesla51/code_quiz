@@ -1,8 +1,10 @@
-# Code Quiz
+<h1 align="center">Coding Questions Repository</h1>
+
 <p align="center">
   <img src="https://img.shields.io/github/license/codetesla51/code_quiz" alt="License">
-  ![Version](https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version&cacheBust=1)
+  <img src="https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version&cacheBust=1" alt="Version">
 </p>
+
 
 ---
 
