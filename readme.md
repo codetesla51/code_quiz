@@ -1,7 +1,7 @@
 # Code Quiz
 <p align="center">
   <img src="https://img.shields.io/github/license/codetesla51/code_quiz" alt="License">
-  <img src="https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version" alt="Version">
+  ![Version](https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version&cacheBust=1)
 </p>
 
 ---
