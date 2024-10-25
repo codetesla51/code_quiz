@@ -1,5 +1,8 @@
 # Code Quiz
-
+<p align="center">
+  <img src="https://img.shields.io/github/license/codetesla51/code_quiz" alt="License">
+  <img src="https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version" alt="Version">
+</p>
 ## Overview
 This repository contains a collection of coding questions along with their
 solutions In PHP. The questions focus on various programming concepts and algorithms,
@@ -9,6 +12,15 @@ coding skills.
 #### Code example files can be found in the solutions folder of the repository.Please check there for full implementations.
 ---
 
+## Table of Contents
+- [Overview](#overview)
+- [Questions](#questions)
+  - [Palindrome Checker](#1-palindrome-checker)
+  - [Duplicate Number Finder](#2-duplicate-number-finder)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
 ## Questions
 
 ### 1. Palindrome Checker
