@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Code Quiz 
-=======
 # Code Quiz
->>>>>>> 0016427 (fix code bugs and readme update)
 
 ## Overview
 This repository contains a collection of coding questions along with their
@@ -78,7 +74,7 @@ echo $checker->isPalindrome() ? "true" : "false"; // Should output: true
   - Given the array `[1, 2, 3, 3, 7, 8, 5, 8, 7, 7, 5]`, the output indicates that the number `3` appears `2` times, `7` appears `3` times, and `8` appears `2` times in the array.
 
 **code solution**
-```
+```php
 class Duplicate
 {
   private $array; // The input array
