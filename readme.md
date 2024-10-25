@@ -6,6 +6,8 @@ solutions In PHP. The questions focus on various programming concepts and algori
 providing a resource for learners and developers to practice and improve their
 coding skills.
 
+### Code example files can be found in the solutions folder of the repository.
+Please check there for full implementations.
 ---
 
 ## Questions
@@ -58,7 +60,6 @@ $checker = new PalindromeChecker("A man, a plan, a canal: Panama");
 echo $checker->isPalindrome() ? "true" : "false"; // Should output: true
 
 ```
-- ### code example file in solutions folder of repository
 
 ---
 
@@ -126,11 +127,11 @@ $array = [1, 2, 3, 3, 7, 8, 5, 8, 7, 7, 5];
 $duplicateChecker = new Duplicate($array);
 $duplicateChecker->isItDuplicate();
 ```
-- ### code example file in solutions folder of repository
 ---
 
+
 ## Contributing
-Feel free to contribute by adding new questions and solutions. Open issues for any suggestions or improvements!
+Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
 
 ## License
 This repository is licensed under the MIT License.
