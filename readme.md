@@ -1,4 +1,4 @@
-# Coding Questions Repository
+# Code Quiz 
 
 ## Overview
 This repository contains a collection of coding questions along with their solutions. The questions focus on various programming concepts and algorithms, providing a resource for learners and developers to practice and improve their coding skills.
