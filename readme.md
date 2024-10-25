@@ -23,8 +23,8 @@ coding skills.
 - [Questions](#questions)
   - [Palindrome Checker](#1-palindrome-checker)
   - [Duplicate Number Finder](#2-duplicate-number-finder)
-  - [Missing Number Finder and Array
-  Update](#3-missing-number-finder-and-array-update)
+  - [Missing Number Finder and Array Update](#3-missing-number-finder-and-array-update)
+  - [ Fibonacci Sequence](#4-fibonacci-sequence)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -228,7 +228,7 @@ $missingFinder->findAndAddMissingNumber();
 </ul>
 
 ---
-### 4. Fibonacci Sequence Generator
+### 4. Fibonacci Sequence 
 #### What is Fibonacci?
 The **Fibonacci sequence** is a series of numbers in which each number is the sum of the two preceding ones, usually starting with 0 and 1. The sequence is defined by the following recurrence relation:
 - **Description**: Generate the Fibonacci sequence up to a specified number of terms.
