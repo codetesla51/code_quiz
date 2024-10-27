@@ -287,6 +287,176 @@ $fibonacciGenerator = new FibonacciGenerator(5);
 $fibonacciGenerator->generateFibonacci();
 
 ```
+---
+<h3>5. Factorial</h3>
+<h4>What is Factorial?</h4>
+<p>
+    The <strong>factorial</strong> of a non-negative integer <em>n</em> is the product of all positive integers less than or equal to <em>n</em>. 
+    It is denoted by <em>n!</em>, and the factorial of 0 is defined as 1. Factorials are frequently used in combinatorics, probability, 
+    and various mathematical computations.
+</p>
+
+<ul>
+    <li><strong>Description</strong>: Calculate the factorial of a given number <em>n</em>.</li>
+</ul>
+
+<h4>Solution:</h4>
+<ol>
+    <li>Start with a result of 1.</li>
+    <li>Multiply each integer from 1 up to <em>n</em> by the result to calculate the factorial.</li>
+    <li>Alternatively, use recursion where <code>n! = n × (n-1)!</code>.</li>
+</ol>
+
+<h4>Example:</h4>
+<p>Given <em>n = 5</em>, the factorial calculated is:</p>
+<pre>
+5! = 5 × 4 × 3 × 2 × 1 = 120
+</pre>
+
+**code solution** 
+```php
+class FactorialCalculator
+{
+  private int $limit; // The upper limit for factorial calculations
+  private array $factorials; // Array to store calculated factorials
+
+  /**
+   * Constructor to initialize the upper limit.
+   *
+   * @param int $limit - The highest number for which to calculate the factorial
+   */
+  public function __construct(int $limit)
+  {
+    $this->limit = $limit;
+    $this->factorials = [];
+  }
+
+  /**
+   * Method to calculate and store factorials in an array.
+   *
+   * @return void
+   */
+  public function calculateFactorials(): void
+  {
+    for ($i = 1; $i <= $this->limit; $i++) {
+      $factorial = 1;
+      for ($j = 1; $j <= $i; $j++) {
+        $factorial *= $j;
+      }
+      $this->factorials[] = $factorial;
+    }
+  }
+
+  /**
+   * Method to display the calculated factorials.
+   *
+   * @return void
+   */
+  public function displayFactorials(): void
+  {
+    echo "Factorials up to {$this->limit}:\n";
+    echo implode(", ", $this->factorials) . "\n";
+  }
+}
+
+// Example usage
+$calculator = new FactorialCalculator(5); // Set the limit to 5
+$calculator->calculateFactorials();
+$calculator->displayFactorials();
+```
+
+<h3>6. Balanced Brackets</h3>
+<h4>What is Balanced Brackets?</h4>
+<p>
+    A set of brackets (such as <code>()</code>, <code>[]</code>, <code>{}</code>) is considered <strong>balanced</strong> if each opening 
+    bracket has a corresponding closing bracket, and they are correctly nested. This problem often appears in programming, especially 
+    in syntax validation for expressions, HTML tags, and code blocks.
+</p>
+
+<ul>
+    <li><strong>Description</strong>: Check if a given string containing brackets is balanced.</li>
+</ul>
+
+<h4>Solution:</h4>
+<ol>
+    <li>Initialize an empty stack to keep track of opening brackets.</li>
+    <li>Loop through each character in the string:
+        <ul>
+            <li>If the character is an opening bracket (<code>(</code>, <code>[</code>, <code>{</code>), push it onto the stack.</li>
+            <li>If it is a closing bracket (<code>)</code>, <code>]</code>, <code>}</code>), check if the top of the stack has the 
+                corresponding opening bracket. If it does, pop the stack; if not, the brackets are unbalanced.</li>
+        </ul>
+    </li>
+    <li>At the end of the loop, if the stack is empty, the brackets are balanced; otherwise, they are not.</li>
+</ol>
+
+<h4>Example:</h4>
+<p>Given the string <code>"{[()]}"</code>, the brackets are balanced.</p>
+<p>Given the string <code>"{[(])}"</code>, the brackets are <strong>not</strong> balanced.</p>
+```php
+class BracketBalancer
+{
+  private array $bracketsMap; // Associative array for matching brackets
+  private array $bracketSequences; // Array of bracket sequences to check
+
+  /**
+   * Constructor to initialize the bracket map and bracket sequences
+   *
+   * @param array $bracketSequences - Array of bracket sequences
+   */
+  public function __construct(array $bracketSequences)
+  {
+    $this->bracketsMap = [
+      "(" => ")",
+      "[" => "]",
+      "{" => "}",
+    ];
+    $this->bracketSequences = $bracketSequences;
+  }
+
+  /**
+   * Method to check if each sequence of brackets is balanced
+   *
+   * @return void
+   */
+  public function checkBalancedBrackets(): void
+  {
+    foreach ($this->bracketSequences as $sequence) {
+      $stack = []; // Stack to track opening brackets
+      $isBalanced = true; // Flag to track if the sequence is balanced
+
+      // Loop through each character in the bracket sequence
+      foreach (str_split($sequence) as $char) {
+        if (isset($this->bracketsMap[$char])) {
+          // If the character is an opening bracket, push it onto the stack
+          $stack[] = $char;
+        } else {
+          // If the character is a closing bracket, check for a match
+          $lastOpeningBracket = array_pop($stack);
+
+          // Check if the last opening bracket matches the current closing bracket
+          if ($this->bracketsMap[$lastOpeningBracket] !== $char) {
+            $isBalanced = false;
+            break;
+          }
+        }
+      }
+
+      // If stack is not empty or isBalanced is false, the sequence is unbalanced
+      if ($isBalanced && empty($stack)) {
+        echo "The sequence \"$sequence\" is balanced.\n";
+      } else {
+        echo "The sequence \"$sequence\" is not balanced.\n";
+      }
+    }
+  }
+}
+
+// Example usage
+$bracketSequences = ["()", "[{}]", "(]", "{[()]}"];
+$bracketBalancer = new BracketBalancer($bracketSequences);
+$bracketBalancer->checkBalancedBrackets();
+```
 ## Contributing
 Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
 
