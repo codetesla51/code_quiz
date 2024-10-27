@@ -24,7 +24,9 @@ coding skills.
   - [Palindrome Checker](#1-palindrome-checker)
   - [Duplicate Number Finder](#2-duplicate-number-finder)
   - [Missing Number Finder and Array Update](#3-missing-number-finder-and-array-update)
-  - [ Fibonacci Sequence](#4-fibonacci-sequence)
+  - [Fibonacci Sequence](#4-fibonacci-sequence)
+  - [Factorial](#5-factorial)
+  - [Balanced Brackets](#6-balanced-brackets)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -393,6 +395,7 @@ $calculator->displayFactorials();
 <h4>Example:</h4>
 <p>Given the string <code>"{[()]}"</code>, the brackets are balanced.</p>
 <p>Given the string <code>"{[(])}"</code>, the brackets are <strong>not</strong> balanced.</p>
+
 ```php
 class BracketBalancer
 {
