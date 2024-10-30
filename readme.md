@@ -460,6 +460,54 @@ $bracketSequences = ["()", "[{}]", "(]", "{[()]}"];
 $bracketBalancer = new BracketBalancer($bracketSequences);
 $bracketBalancer->checkBalancedBrackets();
 ```
+
+### 7. Two Sum Finder
+- **Description**: Given a sorted array of numbers, determine two indices where the numbers at those indices add up to a specified target value.
+
+- **Solution**:
+  - Use the two-pointer technique to traverse the array.
+  - Initialize one pointer at the start of the array and the other at the end.
+  - Calculate the sum of the numbers at the two pointers.
+  - If the sum matches the target, return the 1-based indices. If the sum is less than the target, move the start pointer to the right; if greater, move the end pointer to the left.
+  - Continue until the two pointers meet.
+
+- **Example**:
+  - Given the sorted array `[1, 2, 3, 4, 6, 7, 8]` and a target of `8`, the output indicates that the numbers at indices `4` and `5` (which are `4` and `6`) add up to `8`.
+**code solution** 
+```Python
+def two_sum(array, target):
+    start = 0  # Initialize the start pointer
+    end = len(array) - 1  # Initialize the end pointer
+
+    # Loop until the two pointers meet
+    while start < end:
+        sum_value = array[start] + array[end]  # Calculate the current sum
+
+        # Debugging output to verify pointer positions and current sum
+        print(f"Start Index: {start}, End Index: {end}")
+        print(f"Values: {array[start]} + {array[end]} = {sum_value}")
+
+        # Check if the current sum matches the target
+        if sum_value == target:
+            return start, end  # Return 0-based indices
+
+        # Adjust pointers based on the current sum
+        if sum_value < target:
+            start += 1  # Move start pointer right to increase sum
+        else:
+            end -= 1  # Move end pointer left to decrease sum
+
+    # Return None if no solution is found
+    return None
+
+# Example usage
+array = [1, 2, 3, 4, 6, 7, 8]
+target = 8
+result = two_sum(array, target)
+
+print("Result:", result)  # Expected output: (3, 4) or similar pair
+```
+
 ## Contributing
 Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
 
