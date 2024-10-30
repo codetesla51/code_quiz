@@ -10,14 +10,11 @@
 
 
 ## Overview
-This repository contains a collection of coding questions along with their
-solutions In **PHP** and **Python**. The questions focus on various programming concepts and algorithms,
-providing a resource for learners and developers to practice and improve their
-coding skills.
+This repository contains a collection of coding questions along with their solutions in PHP and Python. The questions focus on various programming concepts and algorithms, providing a valuable resource for learners and developers to practice and enhance their coding skills.
 
-#### Code example files can be found in the solutions folder of the
-repository.Please check there for full implementations For **PHP** and **Python**
-codees.
+#### Code Example Files
+You can find the complete implementations in the `solutions` folder of the repository. Please check there for the full code examples in both **PHP** and **Python**.
+
 ---
 
 ## Table of Contents
