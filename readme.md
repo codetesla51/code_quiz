@@ -27,6 +27,7 @@ coding skills.
   - [Fibonacci Sequence](#4-fibonacci-sequence)
   - [Factorial](#5-factorial)
   - [Balanced Brackets](#6-balanced-brackets)
+  - [Two Sum](#7-two-sum-finder)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -473,39 +474,82 @@ $bracketBalancer->checkBalancedBrackets();
 
 - **Example**:
   - Given the sorted array `[1, 2, 3, 4, 6, 7, 8]` and a target of `8`, the output indicates that the numbers at indices `4` and `5` (which are `4` and `6`) add up to `8`.
-**code solution** 
-```Python
-def two_sum(array, target):
-    start = 0  # Initialize the start pointer
-    end = len(array) - 1  # Initialize the end pointer
 
-    # Loop until the two pointers meet
-    while start < end:
-        sum_value = array[start] + array[end]  # Calculate the current sum
+  **code solution** 
+```php
+class TwoSumFinder
+{
+  private array $array;
+  private int $target;
 
-        # Debugging output to verify pointer positions and current sum
-        print(f"Start Index: {start}, End Index: {end}")
-        print(f"Values: {array[start]} + {array[end]} = {sum_value}")
+  /**
+   * Constructor to initialize the array and target.
+   *
+   * @param array $array - Sorted array of integers.
+   * @param int $target - Target sum for the two numbers.
+   */
+  public function __construct(array $array, int $target)
+  {
+    $this->array = $array;
+    $this->target = $target;
+  }
 
-        # Check if the current sum matches the target
-        if sum_value == target:
-            return start, end  # Return 0-based indices
+  /**
+   * Method to find the two indices where the values sum up to the target.
+   *
+   * @return array - Returns an array with 1-based indices of the two numbers
+   *                that add up to the target, or an empty array if no such
+   *                numbers exist.
+   */
+  public function findTwoSum(): array
+  {
+    $start = 0;
+    $end = count($this->array) - 1;
 
-        # Adjust pointers based on the current sum
-        if sum_value < target:
-            start += 1  # Move start pointer right to increase sum
-        else:
-            end -= 1  # Move end pointer left to decrease sum
+    while ($start < $end) {
+      $sum = $this->array[$start] + $this->array[$end];
 
-    # Return None if no solution is found
-    return None
+      // Debugging output to verify pointer positions and current sum
+      echo "Start Index: " .
+        ($start + 1) .
+        ", End Index: " .
+        ($end + 1) .
+        PHP_EOL;
+      echo "Values: " .
+        $this->array[$start] .
+        " + " .
+        $this->array[$end] .
+        " = $sum" .
+        PHP_EOL;
 
-# Example usage
-array = [1, 2, 3, 4, 6, 7, 8]
-target = 8
-result = two_sum(array, target)
+      // Check if the current sum matches the target
+      if ($sum === $this->target) {
+        return [$start + 1, $end + 1]; // Return 1-based indices
+      }
 
-print("Result:", result)  # Expected output: (3, 4) or similar pair
+      // Adjust pointers based on the current sum
+      if ($sum < $this->target) {
+        $start++; // Move start pointer right to increase sum
+      } else {
+        $end--; // Move end pointer left to decrease sum
+      }
+    }
+
+    // Return empty array if no solution is found
+    return [];
+  }
+}
+
+// Example usage:
+$array = [1, 2, 3, 4, 6, 7, 8];
+$target = 8;
+$finder = new TwoSumFinder($array, $target);
+$result = $finder->findTwoSum();
+
+echo "Result: ";
+print_r($result); // Expected output: Array with indices, e.g., [4, 5]
+?>
+
 ```
 
 ## Contributing
