@@ -19,7 +19,7 @@ class FibonacciGenerator
   /**
    * Constructor to initialize the Fibonacci sequence parameters.
    *
-   * @param int,float $termCount - Number of Fibonacci terms to generate.
+   * @param int|float $termCount - Number of Fibonacci terms to generate.
    */
   public function __construct(int|float $termCount)
   {
