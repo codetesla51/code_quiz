@@ -546,8 +546,7 @@ $finder = new TwoSumFinder($array, $target);
 $result = $finder->findTwoSum();
 
 echo "Result: ";
-print_r($result); // Expected output: Array with indices, e.g., [4, 5]
-?>
+print_r($result); // Expected output: Array with indices, e.g., [0, 5]
 
 ```
 
