@@ -1,4 +1,5 @@
-<h1 align="center">Code Quiz</h1>
+<h1 align="center"
+style="color:#008afa;background:#232425;border-radius:8px;padding:.5em .5em">Code Quiz</h1>
 
 <p align="center">
   <img src="https://img.shields.io/github/license/codetesla51/code_quiz" alt="License">
@@ -6,7 +7,6 @@
 </p>
 
 
----
 
 
 ## Overview
@@ -45,7 +45,7 @@ You can find the complete implementations in the `solutions` folder of the repos
   - For the input `"A man, a plan, a canal: Panama"`, the output is `true` because the string reads the same forwards and backwards.
   - For the input `"race a car"`, the output is `false` because the string does not read the same forwards and backwards.
 
-**code Solution**
+**PHP code Solution**
 ```php
 class PalindromeChecker
 {
@@ -81,7 +81,39 @@ $checker = new PalindromeChecker("A man, a plan, a canal: Panama");
 echo $checker->isPalindrome() ? "true" : "false"; // Should output: true
 
 ```
+**PYTHON code Solution**
+```python
+def is_palindrome(word):
+    """
+    Check if the input string is a palindrome.
 
+    This function sanitizes the input string by removing non-alphanumeric characters
+    and converting it to lowercase, then checks if the sanitized string is the same
+    when read backwards.
+
+    Parameters:
+    word (str): The string to check for palindrome properties.
+
+    Returns:
+    bool: True if the string is a palindrome, False otherwise.
+    """
+    # Remove non-alphanumeric characters from the string
+    sanitized_string = re.sub(r"[^a-zA-Z0-9]", "", word)
+    
+    # Convert the sanitized string to lowercase
+    normalized_string = sanitized_string.lower()
+    
+    # Reverse the normalized string
+    reversed_string = normalized_string[::-1]
+    
+    # Return True if the normalized string is equal to its reverse, else return False
+    return normalized_string == reversed_string
+
+# Example usage:
+input_string = "A man, a plan, a canal, Panama"
+print(is_palindrome(input_string))  # Expected output: True
+
+```
 ---
 
 ### 2. Duplicate Number Finder
@@ -95,7 +127,7 @@ echo $checker->isPalindrome() ? "true" : "false"; // Should output: true
 - **Example**: 
   - Given the array `[1, 2, 3, 3, 7, 8, 5, 8, 7, 7, 5]`, the output indicates that the number `3` appears `2` times, `7` appears `3` times, and `8` appears `2` times in the array.
 
-**code solution**
+**PHP code solution**
 ```php
 class Duplicate
 {
@@ -148,6 +180,44 @@ $array = [1, 2, 3, 3, 7, 8, 5, 8, 7, 7, 5];
 $duplicateChecker = new Duplicate($array);
 $duplicateChecker->isItDuplicate();
 ```
+**PYTHON code solution**
+```Python
+def find_duplicates(arr):
+    """
+    Function to find and count duplicate elements in an array.
+    
+    This function takes an array as input and returns a dictionary
+    with duplicate values as keys and their counts as values.
+    
+    Parameters:
+    arr (list): The input array containing elements to check for duplicates.
+
+    Returns:
+    dict: A dictionary containing duplicates and their corresponding counts.
+    """
+    left = 0  # Pointer for the first element in the current pair
+    right = 1  # Pointer for the second element in the current pair
+    dictionary = {}  # Dictionary to store duplicates and their counts
+
+    # Iterate through the array to find duplicates
+    while right < len(arr):
+        if arr[left] == arr[right]:  # Check if the current pair is a duplicate
+            if arr[left] in dictionary:
+                dictionary[arr[left]] += 1  # Increment count if already in dictionary
+            else:
+                dictionary[arr[left]] = 2  # Initialize count as 2 (found twice)
+            right += 1  # Move the right pointer to find more duplicates
+        else:
+            left = right  # Move left to the position of the right pointer
+            right += 1  # Increment right pointer to check the next element
+    
+    return dictionary  # Return the dictionary with duplicates
+
+# Example usage
+arr = [1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 5]
+print(find_duplicates(arr))  # Expected output: {2: 2, 3: 3, 5: 4}
+
+```
 ---
 ### 3. Missing Number Finder and Array Update
 
@@ -173,7 +243,7 @@ $duplicateChecker->isItDuplicate();
     </ul>
   </li>
   
-  **code solution**
+  **PHP code solution**
   ```php
   class MissingNumberFinder
 {
@@ -227,6 +297,30 @@ $numbers = [1, 2, 4, 5]; // Sequence with missing number 3
 $missingFinder = new MissingNumberFinder($numbers);
 $missingFinder->findAndAddMissingNumber();
   ```
+  
+  **PYTHON code solution**
+  ```python
+  def missing_number(array):
+    """
+    Calculate the missing number in a sequence from 1 to n.
+
+    This function assumes that the input array contains integers
+    from 1 to n, with one number missing. It computes the expected
+    sum of numbers in that range and compares it to the actual sum
+    of the numbers present in the array.
+
+    Parameters:
+    array (list of int): A list of integers with one missing number.
+
+    Returns:
+    int: The missing number in the sequence.
+    """
+    n = len(array) + 1  # The total number of integers should be n (length of array + 1)
+    expected_sum = n * (n + 1) // 2  # Calculate the expected sum of the sequence
+    actual_sum = sum(array)  # Calculate the actual sum of the given array
+    missing = expected_sum - actual_sum  # Determine the missing number
+    return missing  # Return the missing number
+```
 </ul>
 
 ---
@@ -243,7 +337,7 @@ The **Fibonacci sequence** is a series of numbers in which each number is the su
 - **Example**:
   - Given `n = 5`, the Fibonacci sequence generated is `[0, 1, 1, 2, 3]`.
 
-**code solution**
+**PHP code solution**
 
 ```php
 class FibonacciGenerator
@@ -289,6 +383,38 @@ $fibonacciGenerator = new FibonacciGenerator(5);
 $fibonacciGenerator->generateFibonacci();
 
 ```
+**PYTHON code solution**
+```python
+def fibonacci(k):
+    """
+    Function to generate a Fibonacci sequence.
+    
+    This function generates a Fibonacci sequence up to a specified
+    number of terms and returns it as a list.
+
+    Parameters:
+    k (int): The number of terms in the Fibonacci sequence to generate.
+
+    Returns:
+    list: A list containing the Fibonacci sequence up to the specified term count.
+    """
+    first_term = 0  # The first term of the Fibonacci sequence
+    second_term = 1  # The second term of the Fibonacci sequence
+    sequence = []  # List to store the Fibonacci sequence
+
+    # Generate the Fibonacci sequence
+    for n in range(k):
+        sequence.append(first_term)  # Add the current first term to the sequence
+        next_term = first_term + second_term  # Calculate the next term
+        first_term = second_term  # Update the first term to the second term
+        second_term = next_term  # Update the second term to the next term
+
+    return sequence  # Return the generated Fibonacci sequence
+
+# Example usage
+print(fibonacci(5))  # Expected output: [0, 1, 1, 2, 3]
+
+```
 ---
 <h3>5. Factorial</h3>
 <h4>What is Factorial?</h4>
@@ -315,7 +441,7 @@ $fibonacciGenerator->generateFibonacci();
 5! = 5 × 4 × 3 × 2 × 1 = 120
 </pre>
 
-**code solution** 
+**PHP code solution** 
 ```php
 class FactorialCalculator
 {
@@ -366,7 +492,34 @@ $calculator = new FactorialCalculator(5); // Set the limit to 5
 $calculator->calculateFactorials();
 $calculator->displayFactorials();
 ```
+**PYTHON code solution**
+```python
+def factorial(n):
+    """
+    Calculate the factorials of numbers from 1 to n.
 
+    This function computes the factorial for each integer from 1 to n
+    and stores the results in a list. The factorial of a number is the
+    product of all positive integers up to that number.
+
+    Parameters:
+    n (int): The upper limit for which to calculate factorials.
+
+    Returns:
+    list: A list containing the factorials of numbers from 1 to n.
+    """
+    sequence = []  # Initialize an empty list to store the factorials
+    for i in range(1, n + 1):  # Loop from 1 to n (inclusive)
+        k = 1  # Initialize k to 1 for each value of i
+        for j in range(1, i + 1):  # Loop from 1 to i (inclusive)
+            k *= j  # Multiply k by j to calculate the factorial
+        sequence.append(k)  # Append the factorial of i to the sequence
+    return sequence  # Return the list of factorials
+
+# Example usage:
+print(factorial(5))  # Expected output: [1, 2, 6, 24, 120]
+
+```
 <h3>6. Balanced Brackets</h3>
 <h4>What is Balanced Brackets?</h4>
 <p>
@@ -460,6 +613,7 @@ $bracketSequences = ["()", "[{}]", "(]", "{[()]}"];
 $bracketBalancer = new BracketBalancer($bracketSequences);
 $bracketBalancer->checkBalancedBrackets();
 ```
+<div style="color:#008afa">Sorry Python Code Not Available Yet</div>
 
 ### 7. Two Sum Finder
 - **Description**: Given a sorted array of numbers, determine two indices where the numbers at those indices add up to a specified target value.
@@ -474,7 +628,7 @@ $bracketBalancer->checkBalancedBrackets();
 - **Example**:
   - Given the sorted array `[1, 2, 3, 4, 6, 7, 8]` and a target of `8`, the output indicates that the numbers at indices `4` and `5` (which are `4` and `6`) add up to `8`.
 
-  **code solution** 
+  **PHP code solution** 
 ```php
 class TwoSumFinder
 {
@@ -547,6 +701,43 @@ $result = $finder->findTwoSum();
 
 echo "Result: ";
 print_r($result); // Expected output: Array with indices, e.g., [0, 5]
+
+```
+**PYTHON code solution**
+
+```python
+def two_sum(array, target):
+    start = 0  # Initialize the start pointer at the beginning of the array
+    end = len(array) - 1  # Initialize the end pointer at the end of the array
+
+    # Loop until the two pointers meet
+    while start < end:
+        sum_value = array[start] + array[end]  # Calculate the current sum of the two pointed values
+
+        # Debugging output to verify pointer positions and current sum
+        print(f"Start Index: {start}, End Index: {end}")
+        print(f"Values: {array[start]} + {array[end]} = {sum_value}")
+
+        # Check if the current sum matches the target
+        if sum_value == target:
+            return start, end  # Return 0-based indices of the two numbers
+
+        # Adjust pointers based on the current sum
+        if sum_value < target:
+            start += 1  # Move start pointer right to increase sum
+        else:
+            end -= 1  # Move end pointer left to decrease sum
+
+    # Return None if no solution is found
+    return None
+
+# Example usage
+array = [1, 2, 3, 4, 6, 7, 8]  # A sorted array of integers
+target = 8  # The target sum we want to find
+result = two_sum(array, target)  # Call the function with the array and target
+
+# Print the result
+print("Result:", result)  # Expected output: (3, 4) or similar pair
 
 ```
 
