@@ -117,11 +117,13 @@ print(is_palindrome(input_string))  # Expected output: True
 ---
 
 ### 2. Duplicate Number Finder
+
 - **Description**: Given an array of numbers, determine which numbers are duplicates and count their occurrences.
 
 - **Solution**: 
-  - Use a hashmap (associative array) to track the occurrences of each number as you iterate through the array.
-  - For each number, check if it has already been seen. If so, increment its count; if not, add it to the hashmap.
+  - **Sort the Array**: First, sort the array to arrange duplicate numbers together.
+  - **Two Pointers**: Use two pointers to traverse the sorted array. One pointer tracks the current unique number, while the other pointer checks for duplicates.
+  - For each number, check if it has already been seen. If so, increment its count; if not, reset the count.
   - After processing the array, print the numbers that are duplicates along with their counts.
 
 - **Example**: 
