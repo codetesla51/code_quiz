@@ -188,7 +188,7 @@ class DuplicateFinder
 $arr = [1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 5]; // Sample array
 $duplicateFinder = new DuplicateFinder($arr); // Create an instance of DuplicateFinder
 print_r($duplicateFinder->findDuplicates()); // Print duplicates and their counts
-?>
+
 ```
 **PYTHON code solution**
 ```Python
