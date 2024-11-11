@@ -1,21 +1,17 @@
-<h1 align="center"
-style="color:#008afa;background:#232425;border-radius:8px;padding:.5em .5em">Code Quiz</h1>
-
 <p align="center">
   <img src="https://img.shields.io/github/license/codetesla51/code_quiz" alt="License">
   <img src="https://img.shields.io/github/v/tag/codetesla51/code_quiz?label=version&cacheBust=1" alt="Version">
 </p>
 
-
-
+<h2 align="center">Code Quiz</h2>
 
 ## Overview
 This repository contains a collection of coding questions along with their solutions in PHP and Python. The questions focus on various programming concepts and algorithms, providing a valuable resource for learners and developers to practice and enhance their coding skills.
 
+We use the most **performant algorithms** to ensure that solutions are optimized for speed and efficiency.
+
 #### Code Example Files
 You can find the complete implementations in the `solutions` folder of the repository. Please check there for the full code examples in both **PHP** and **Python**.
-
----
 
 ## Table of Contents
 - [Overview](#overview)
@@ -27,10 +23,13 @@ You can find the complete implementations in the `solutions` folder of the repos
   - [Factorial](#5-factorial)
   - [Balanced Brackets](#6-balanced-brackets)
   - [Two Sum](#7-two-sum-finder)
+  - [Find Target](#8-find-target)
+  - [Find Smallest Number](#9-find-smallest-number)
+  - [Find Integer Square Root](#10-find-integer-square-root)
 - [Contributing](#contributing)
 - [License](#license)
-
 ---
+
 ## Questions
 
 ### 1. Palindrome Checker
@@ -750,7 +749,308 @@ result = two_sum(array, target)  # Call the function with the array and target
 print("Result:", result)  # Expected output: (3, 4) or similar pair
 
 ```
+---
+### 8. Find Target
+- **Description**: Given a sorted array of numbers, find the index of a target value within the array using binary search. If the target is not found, return `-1`.
 
+- **Solution**:
+  - Initialize two pointers, one at the start of the array and the other at the end.
+  - Calculate the middle index and compare the middle element with the target.
+  - If the middle element matches the target, return the index.
+  - If the middle element is less than the target, move the start pointer to the right; if greater, move the end pointer to the left.
+  - Continue until the target is found or the pointers converge.
+
+- **Example**:
+  - Given the sorted array `[1, 2, 3, 4, 5, 6, 7, 8]` and a target of `6`, the output should be the index `5` (0-based) as `6` is found at that position.
+
+
+**PHP Code Solution**
+
+```php
+class BinarySearch
+{
+  private array $arr; // Array in which to search
+  private int $target; // Target value to search for
+
+  // Constructor to initialize the array and target
+  public function __construct(array $arr, int $target)
+  {
+    $this->arr = $arr;
+    $this->target = $target;
+  }
+
+  // Method to perform binary search
+  public function search(): int
+  {
+    // Return type is an integer (index or -1 if not found)
+    $start = 0; // Starting index of the search range
+    $end = count($this->arr) - 1; // Ending index of the search range
+
+    // Loop to continue the search as long as start index is less than or equal to end index
+    while ($start <= $end) {
+      $mid = intdiv($start + $end, 2); // Calculate the middle index (floor division)
+
+      // Check if the middle element is less than the target
+      if ($this->arr[$mid] < $this->target) {
+        $start = $mid + 1; // Move the start index right if the target is larger
+      }
+      // Check if the middle element is greater than the target
+      elseif ($this->arr[$mid] > $this->target) {
+        $end = $mid - 1; // Move the end index left if the target is smaller
+      }
+      // If the middle element equals the target, return the index
+      else {
+        return $mid;
+      }
+    }
+
+    // Return -1 if target is not found in the array
+    return -1;
+  }
+}
+
+// Example usage:
+$target = 7;
+$n = 100000;
+$arr = range(1, $n); // Generate an array of numbers from 1 to 100000
+$binarySearch = new BinarySearch($arr, $target);
+print_r($binarySearch->search()); // Output: 6
+
+```
+**PYTHON code solution**
+```python
+def binary_search(arr, target):
+    start = 0  # Initialize the start pointer at the beginning of the array
+    end = len(arr) - 1  # Initialize the end pointer at the end of the array
+
+    # Perform binary search
+    while start <= end:
+        mid = (start + end) // 2  # Calculate the middle of the range
+
+        # Debugging output to verify pointer positions
+        print(f"Start: {start}, End: {end}, Mid: {mid}, Mid Element: {arr[mid]}")
+
+        # Check if the middle element is the target
+        if arr[mid] == target:
+            return mid  # Return the index if found
+
+        # Adjust search range based on the middle element's value
+        if arr[mid] < target:
+            start = mid + 1  # Search the right half
+        else:
+            end = mid - 1  # Search the left half
+
+    # Return -1 if the target is not found
+    return -1
+
+# Example usage
+arr = list(range(1, 100001))  # A large sorted array
+target = 7  # The target value to find
+result = binary_search(arr, target)  # Call the function with the array and target
+
+# Print the result
+print("The target index is:", result)  # Expected output: 6 if target = 7
+```
+---
+### 9. Find Smallest Number
+- **Description**: Given an array of numbers, find the smallest number in the array.
+
+- **Solution**:
+  - Iterate through the array to compare each element.
+  - Keep track of the smallest number encountered during the iteration.
+  - Return the smallest number after completing the loop.
+
+- **Example**:
+  - Given the array `[5, 3, 8, 1, 6]`, the smallest number is `1`.
+
+
+**PHP Code Solution**
+
+```php
+class RotatedArrayMinFinder
+{
+  private array $arr;
+
+  // Constructor to initialize the array
+  public function __construct(array $arr)
+  {
+    $this->arr = $arr;
+  }
+
+  // Method to find the smallest element in the rotated sorted array
+  public function findSmallest(): int
+  {
+    $left = 0;
+    $right = count($this->arr) - 1;
+
+    // If the array is not rotated, return the first element
+    if ($this->arr[$left] < $this->arr[$right]) {
+      return $this->arr[$left];
+    }
+
+    // Binary search to find the minimum element
+    while ($left < $right) {
+      $mid = floor(($left + $right) / 2);
+
+      // If mid element is greater than the rightmost element,
+      // the minimum is in the right half
+      if ($this->arr[$mid] > $this->arr[$right]) {
+        $left = $mid + 1;
+      }
+      // Otherwise, the minimum is in the left half (including mid)
+      else {
+        $right = $mid;
+      }
+    }
+
+    // After the loop, left will point to the minimum element
+    return $this->arr[$left];
+  }
+}
+
+// Example usage:
+$arr = [4, 5, 6, 7, 0, 1, 2];
+$finder = new RotatedArrayMinFinder($arr);
+echo "The minimum value is: " . $finder->findSmallest(); // Output: 0
+
+```
+**PYTHON code solution**
+```python
+def find_minimum_in_rotated_array(arr):
+    left = 0
+    right = len(arr) - 1
+
+    # Special case: If the array is not rotated
+    if arr[left] < arr[right]:
+        return arr[left]
+
+    # Binary search to find the minimum element
+    while left < right:
+        mid = (left + right) // 2
+
+        # Debugging output to verify pointer positions
+        print(f"Left: {left}, Right: {right}, Mid: {mid}, Mid Element: {arr[mid]}")
+
+        # If mid element is greater than the rightmost element, the minimum is in the right half
+        if arr[mid] > arr[right]:
+            left = mid + 1
+        # Otherwise, the minimum is in the left half or at mid
+        else:
+            right = mid
+
+    # At the end of the loop, left will be the index of the minimum element
+    return arr[left]
+
+# Example usage
+arr = [4, 5, 6, 7, 0, 1, 2]  # Rotated sorted array
+result = find_minimum_in_rotated_array(arr)  # Call the function with the array
+
+# Print the result
+print("The minimum value is:", result)  # Expected output: 0
+```
+---
+### 10. Find Integer Square Root
+- **Description**: Given a non-negative integer, find the integer part of its square root.
+
+- **Solution**:
+  - Use a binary search approach to find the integer part of the square root.
+  - If the number is less than 2, the square root is the number itself.
+  - Otherwise, perform binary search to find the integer square root.
+
+- **Example**:
+  - Given the number `8`, the integer square root is `2`.
+
+ **PHP Code Solution**
+ ```php
+ class SquareRootCalculator
+{
+  private int $x; // The number to find the square root of
+
+  // Constructor to initialize the number
+  public function __construct(int $x)
+  {
+    $this->x = $x;
+  }
+
+  // Method to calculate the integer square root of the number
+  public function calculate(): int
+  {
+    // Return type is integer
+    // If the number is less than 2, its square root is the number itself
+    if ($this->x < 2) {
+      return $this->x;
+    }
+
+    $left = 1; // Left boundary for binary search
+    $right = intdiv($this->x, 2); // Right boundary for binary search (x / 2)
+
+    // Perform binary search
+    while ($left <= $right) {
+      $mid = intdiv($left + $right, 2); // Calculate the mid-point
+      $square = $mid * $mid; // Calculate square of mid
+
+      // If mid squared is exactly equal to x, return mid
+      if ($square == $this->x) {
+        return $mid;
+      }
+      // If square is less than x, adjust left boundary to mid + 1
+      elseif ($square < $this->x) {
+        $left = $mid + 1;
+      }
+      // If square is greater than x, adjust right boundary to mid - 1
+      else {
+        $right = $mid - 1;
+      }
+    }
+
+    // Return the integer square root of x
+    return $right;
+  }
+}
+
+// Example usage:
+$x = 8;
+$squareRootCalculator = new SquareRootCalculator($x);
+echo $squareRootCalculator->calculate(); // Should output: 2
+
+ ```
+**PYTHON code solution**
+```python
+def integer_sqrt(x):
+    # Special case for numbers less than 2
+    if x < 2:
+        return x
+
+    left, right = 1, x // 2  # Define the search range
+
+    # Perform binary search
+    while left <= right:
+        mid = (left + right) // 2  # Calculate the middle of the range
+        square = mid * mid  # Compute the square of the middle value
+
+        # Debugging output to verify pointer positions and current square
+        print(f"Left: {left}, Right: {right}, Mid: {mid}, Square: {square}")
+
+        # Check if the square of mid is equal to x
+        if square == x:
+            return mid  # Exact square root found
+
+        # Adjust the search range based on the square of mid
+        if square < x:
+            left = mid + 1  # Move left pointer to the right to increase mid
+        else:
+            right = mid - 1  # Move right pointer to the left to decrease mid
+
+    # At the end, right will be the integer part of the square root
+    return right
+
+# Example usage
+x = 8  # The number to find the square root of
+result = integer_sqrt(x)  # Call the function with the number
+
+# Print the result
+print("The integer square root is:", result)  # Expected output: 2
+```
 ## Contributing
 Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
 
