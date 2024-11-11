@@ -13,7 +13,7 @@ This repository contains a collection of coding questions along with their solut
 We use the most  **performant algorithms** to ensure that solutions are optimized for speed and efficiency.
 
 #### Code Example Files
-You can find the complete implementations in the `solutions` folder of the repository. Please check there for the full code examples in both **PHP** and **Python**.
+You can find the complete implementations of the questions and their solutions in the `solutions` folder of the repository. The folder contains separate directories for **PHP** and **Python**, each with fully documented code examples that follow best practices for clean, efficient coding.
 
 ## Table of Contents
 - [Overview](#overview)
