@@ -187,7 +187,7 @@ class DuplicateFinder
 $arr = [1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 5]; // Sample array
 $duplicateFinder = new DuplicateFinder($arr); // Create an instance of DuplicateFinder
 print_r($duplicateFinder->findDuplicates()); // Print duplicates and their counts
-
+?>
 ```
 **PYTHON code solution**
 ```Python
@@ -853,12 +853,14 @@ print("The target index is:", result)  # Expected output: 6 if target = 7
 ```
 ---
 ### 9. Find Smallest Number
-- **Description**: Given an array of numbers, find the smallest number in the array.
+- **Description**: Given a rotated sorted array, find the smallest number in the array. A rotated sorted array is an array that was originally sorted in ascending order but then rotated (shifted) at some pivot.
 
 - **Solution**:
-  - Iterate through the array to compare each element.
-  - Keep track of the smallest number encountered during the iteration.
-  - Return the smallest number after completing the loop.
+  - The problem can be efficiently solved using binary search.
+  - The idea is to compare the middle element with the rightmost element to determine which half of the array contains the smallest element.
+  - If the middle element is greater than the rightmost element, the smallest element must lie in the right half of the array.
+  - Otherwise, the smallest element must lie in the left half.
+  - Repeat this process until the left pointer converges to the smallest element.
 
 - **Example**:
   - Given the array `[5, 3, 8, 1, 6]`, the smallest number is `1`.
