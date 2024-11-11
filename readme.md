@@ -5,10 +5,12 @@
 
 <h2 align="center">Code Quiz</h2>
 
+![Local Image](ReadmeImg/file-cKTTEbkEr496F6N7SkfTHC2p.webp)
+
 ## Overview
 This repository contains a collection of coding questions along with their solutions in PHP and Python. The questions focus on various programming concepts and algorithms, providing a valuable resource for learners and developers to practice and enhance their coding skills.
 
-We use the most **performant algorithms** to ensure that solutions are optimized for speed and efficiency.
+We use the most  **performant algorithms** to ensure that solutions are optimized for speed and efficiency.
 
 #### Code Example Files
 You can find the complete implementations in the `solutions` folder of the repository. Please check there for the full code examples in both **PHP** and **Python**.
