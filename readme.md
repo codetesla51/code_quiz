@@ -1056,7 +1056,7 @@ result = integer_sqrt(x)  # Call the function with the number
 print("The integer square root is:", result)  # Expected output: 2
 ```
 ## Contributing
-Feel free to contribute by adding new questions and solutions in any programming language, including but not limited to JavaScript, Python, and C. Open issues for any suggestions or improvements!
+If you'd like to contribute by adding new questions or improving the solutions, feel free to fork this repository and submit a pull request with your changes. We welcome contributions and suggestions to improve this resource for the coding community.
 
 ## License
 This repository is licensed under the MIT License.
